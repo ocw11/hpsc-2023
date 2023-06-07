@@ -3,6 +3,8 @@
 #include <cmath>
 #include <immintrin.h>
 
+
+
 int main() {
   const int N = 8;
   float x[N], y[N], m[N], fx[N], fy[N], a[N];
@@ -21,13 +23,10 @@ int main() {
   for(int i=0; i<N; i++) {
     __m256 ivec = _mm256_set1_ps(i);
     __m256 mask = _mm256_cmp_ps(avec, ivec, _CMP_NEQ_UQ);
-    //__m256 xjvec = _mm256_blendv_ps(bvec, xvec, mask);
-    //__m256 yjvec = _mm256_blendv_ps(bvec, yvec, mask);
-    //__m256 mjvec = _mm256_blendv_ps(bvec, mvec, mask);
+
     __m256 xivec = _mm256_set1_ps(x[i]);
     __m256 yivec = _mm256_set1_ps(y[i]);
-    //xivec = _mm256_blendv_ps(bvec, xivec, mask);
-    //yivec = _mm256_blendv_ps(bvec, yivec, mask);
+
     __m256 rxvec = _mm256_sub_ps(xivec, xvec);
     __m256 ryvec = _mm256_sub_ps(yivec, yvec);
     __m256 rr = _mm256_rsqrt_ps(_mm256_add_ps(_mm256_mul_ps(rxvec, rxvec), _mm256_mul_ps(ryvec, ryvec)));
