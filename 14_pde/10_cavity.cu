@@ -6,7 +6,6 @@
 #include <curand_kernel.h>
 #include <fstream>
 
-
 #define BLOCK_SIZE 16
 
 
